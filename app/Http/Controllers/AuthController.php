@@ -20,4 +20,9 @@ class AuthController extends Controller
     {
     	return view('auth/forget');
     }
+
+    public function reset()
+    {
+        return view('auth/reset');
+    }
 }

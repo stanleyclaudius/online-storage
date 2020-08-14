@@ -9,3 +9,5 @@ Route::get('/login', 'AuthController@login');
 Route::get('/register', 'AuthController@register');
 
 Route::get('/forget', 'AuthController@forget');
+
+Route::get('/reset', 'AuthController@reset');
