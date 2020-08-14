@@ -12,10 +12,10 @@
 @endsection
 
 @section('content')
-<div class="grid grid-cols-2 gap-16 items-center mb-24">
-	<div>
-		<p class="text-4xl">Your Documents Means Alot</p>
-		<p class="text-sm mb-6 text-gray-500">Backup your documents online, so you no need to worry about losing data at your device. We keep your data safe at our site. We're here for you.</p>
+<div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
+	<div class="text-center sm:text-center md:text-center lg:text-left">
+		<p class="text-3xl sm:text-3xl md:text-3xl lg:text-4xl">Your Documents Means Alot</p>
+		<p class="text-sm mb-5 text-gray-500 mt-1">Backup your documents online, so you no need to worry about losing data at your device. We keep your data safe at our site. We're here for you.</p>
 		<p class="mb-10 text-gray-700">We provide an online storage for you to save your documents online. So whenever you have an important document, you can save at our site for backup, and it's safe also free. You can access from every platform because it's online. So when you lost your documents, you can fetch from our site.</p>
 		@if(Auth::check())
 			<a href="/drive" class="rounded px-3 py-2 bg-blue-500 text-white transition duration-150 ease-in-out hover:bg-blue-600">See Drive!</a>
@@ -23,7 +23,7 @@
 			<a href="/register" class="rounded px-3 py-2 bg-blue-500 text-white transition ease-in-out duration-150 hover:bg-blue-600">Get Started!</a>
 		@endif
 	</div>
-	<div>
+	<div class="hidden sm:hidden md:hidden lg:block">
 		<img src="{{ asset('img') }}/content/jumbotron.svg" alt="Online Storage">
 	</div>
 </div>
@@ -31,7 +31,7 @@
 <section id="why" class="mb-24">
 	<p class="text-4xl text-center">Why Choose Us?</p>
 	<p class="text-center text-gray-500 mt-1">List of benefits that you can got from our storage service</p>
-	<div class="grid grid-cols-4 gap-20 items-center mt-10">
+	<div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 items-center mt-10">
 		<div class="w-full h-64 rounded-lg text-center p-4" style="box-shadow: 5px 5px 30px rgba(0,0,0,.5);">
 			<img src="{{ asset('icon') }}/why/backup-color.png" alt="Online Storage" class="mx-auto mb-6">
 			<p class="text-2xl">Backup Documents</p>
@@ -58,7 +58,7 @@
 <section id="faq" class="mb-24">
 	<p class="text-4xl text-center">General FAQ</p>
 	<p class="text-center text-gray-500 mt-1">General questions about our service</p>
-	<div class="grid grid-cols-2 gap-16 mt-10">
+	<div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-10 md:gap-10 lg:gap-16 mt-10">
 		<div>
 			<a href="javascript:void(0)" id="faq1" class="faq">
 				<div class="w-full h-12 bg-gray-100 border border-gray-400 flex items-center justify-between px-5">

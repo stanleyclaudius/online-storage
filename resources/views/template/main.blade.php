@@ -8,10 +8,10 @@
 </head>
 <body>
 
-    <nav class="shadow-lg flex items-center w-full h-16 mb-16">
+    <nav class="shadow-lg flex items-center w-full h-20 mb-16">
         <div class="container mx-auto flex items-center justify-between px-5">
             <div>
-                <a href="/" class="text-xl">Online Storage</a>
+                <a href="/" class="text-2xl">Online Storage</a>
             </div>
             <ul class="flex items-center">
                 @yield('navlink')
@@ -24,8 +24,8 @@
     </div>
 
     <footer class="bg-gray-900 py-8">
-        <div class="container mx-auto px-5">
-            <div class="grid grid-cols-2 gap-24">
+        <div class="container mx-auto px-10 sm:px-10 md:px-5 lg:px-5">
+            <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12 sm:gap-12 md:gap-24 lg:gap-24">
                 <div>
                     <p class="text-4xl text-white">Online Storage</p>
                     <p class="text-gray-300 mt-2">Website that provide storage services for user.</p>
