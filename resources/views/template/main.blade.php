@@ -14,8 +14,7 @@
                 <a href="/" class="text-xl">Online Storage</a>
             </div>
             <ul class="flex items-center">
-                <li><a href="" class="mr-10">Sign In</a></li>
-                <li><a href="" class="rounded px-3 py-2 bg-blue-500 text-white transition duration-150 ease-in-out hover:bg-blue-600">Sign Up</a></li>
+                @yield('navlink')
             </ul>
         </div>
     </nav>

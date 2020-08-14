@@ -2,6 +2,11 @@
 
 @section('title', 'Online Storage')
 
+@section('navlink')
+<li><a href="/login" class="mr-10">Sign In</a></li>
+<li><a href="/register" class="rounded px-3 py-2 bg-blue-500 text-white transition duration-150 ease-in-out hover:bg-blue-600">Sign Up</a></li>
+@endsection
+
 @section('content')
 <div class="grid grid-cols-2 gap-16 items-center mb-24">
 	<div>
