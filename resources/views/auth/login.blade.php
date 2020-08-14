@@ -17,7 +17,7 @@
 		@else
 			<label for="username">Username</label>
 		@endif
-		<input type="text" id="username" name="username" class="w-full px-5 rounded h-10 border border-gray-500 focus:shadow-outline focus:outline-none mt-2" autofocus autocomplete="off" value="{{ old('username') }}">
+		<input type="text" id="username" name="username" class="w-full px-3 rounded h-10 border border-gray-500 focus:shadow-outline focus:outline-none mt-2" autofocus autocomplete="off" value="{{ old('username') }}" placeholder="Your username">
 	</div>
 	<div class="my-6">
 		@if($errors->has('password'))
@@ -25,8 +25,8 @@
 		@else
 			<label for="password">Password</label>
 		@endif
-		<input type="password" id="password" name="password" class="w-full px-5 rounded h-10 border border-gray-500 focus:shadow-outline focus:outline-none mt-2">
-		<a href="" class="text-blue-600">Forget password?</a>
+		<input type="password" id="password" name="password" class="w-full px-3 rounded h-10 border border-gray-500 focus:shadow-outline focus:outline-none mt-2" placeholder="Your password">
+		<a href="/forget" class="text-blue-600">Forget password?</a>
 	</div>
 	<button type="submit" class="bg-blue-500 text-white rounded px-3 py-2 transition duration-150 ease-in-out hover:bg-blue-600">Sign In</button>
 </form>
