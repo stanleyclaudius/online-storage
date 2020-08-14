@@ -9,7 +9,7 @@
 @section('content')
 <p class="text-3xl text-center">Sign Up</p>
 <p class="mt-1 mb-8 text-gray-500 text-center">Sign up to our platform to start putting your documents on our site</p>
-<form action="/register" method="post" class="border border-gray-500 rounded p-6 mx-auto mb-20" style="width: 35%;">
+<form action="/register" method="post" class="border border-gray-500 rounded p-6 mx-auto mb-20 w-64">
 	@csrf
 	<div>
 		@if($errors->has('name'))

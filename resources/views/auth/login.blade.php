@@ -10,7 +10,7 @@
 <div class="flashdata" data-flash="{{ Session::get('auth') }}"></div>
 <p class="text-3xl text-center">Sign In</p>
 <p class="mt-1 mb-8 text-gray-500 text-center">Sign in to our platform to start backuping your documents</p>
-<form action="/login" method="post" class="border border-gray-500 rounded p-6 mx-auto mb-20" style="width: 35%;">
+<form action="/login" method="post" class="border border-gray-500 rounded p-6 mx-auto mb-20 w-64">
 	@csrf
 	<div>
 		@if($errors->has('username'))
