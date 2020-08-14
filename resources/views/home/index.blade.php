@@ -3,8 +3,12 @@
 @section('title', 'Online Storage')
 
 @section('navlink')
-<li><a href="/login" class="mr-10">Sign In</a></li>
-<li><a href="/register" class="rounded px-3 py-2 bg-blue-500 text-white transition duration-150 ease-in-out hover:bg-blue-600">Sign Up</a></li>
+@if(Auth::check())
+	<li><a href="/drive" class="rounded px-3 py-2 bg-blue-500 text-white transition duration-150 ease-in-out hover:bg-blue-600">See Drive!</a></li>
+@else
+	<li><a href="/login" class="mr-10">Sign In</a></li>
+	<li><a href="/register" class="rounded px-3 py-2 bg-blue-500 text-white transition duration-150 ease-in-out hover:bg-blue-600">Sign Up</a></li>
+@endif
 @endsection
 
 @section('content')
@@ -13,7 +17,11 @@
 		<p class="text-4xl">Your Documents Means Alot</p>
 		<p class="text-sm mb-6 text-gray-500">Backup your documents online, so you no need to worry about losing data at your device. We keep your data safe at our site. We're here for you.</p>
 		<p class="mb-10 text-gray-700">We provide an online storage for you to save your documents online. So whenever you have an important document, you can save at our site for backup, and it's safe also free. You can access from every platform because it's online. So when you lost your documents, you can fetch from our site.</p>
-		<a href="" class="rounded px-3 py-2 bg-blue-500 text-white transition ease-in-out duration-150 hover:bg-blue-600">Get Started</a>
+		@if(Auth::check())
+			<a href="/drive" class="rounded px-3 py-2 bg-blue-500 text-white transition duration-150 ease-in-out hover:bg-blue-600">See Drive!</a>
+		@else
+			<a href="/register" class="rounded px-3 py-2 bg-blue-500 text-white transition ease-in-out duration-150 hover:bg-blue-600">Get Started!</a>
+		@endif
 	</div>
 	<div>
 		<img src="{{ asset('img') }}/content/jumbotron.svg" alt="Online Storage">
