@@ -6,6 +6,14 @@
     <title>@yield('title')</title>
     @yield('style')
     <link rel="stylesheet" href="{{ asset('css') }}/main.css">
+    <style>
+        .sticky {
+            position: fixed;
+            background-color: #FFFFFF;
+            z-index: 999;
+            box-shadow: 10px 10px 25px rgba(0,0,0,.3);
+        }
+    </style>
 </head>
 <body>
 
@@ -66,6 +74,11 @@
     </footer>
     
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script>
+    $(window).scroll(function() {
+        $('nav').toggleClass('sticky', window.scrollY > 0);
+    });
+</script>
 @yield('script')
 </body>
 </html>
