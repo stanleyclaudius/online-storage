@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	AOS.init();
 	for (let i = 1; i <= $('.faq').length; i++) {
 		$('#faq' + i).click(function() {
 			if ($('#faq' + i + '-content').hasClass('hidden')) {
