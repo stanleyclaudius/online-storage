@@ -11,6 +11,10 @@ class AuthController extends Controller
 {
     public function login()
     {
+        if (Auth::check()) {
+            return redirect('/drive');
+        }
+
     	return view('auth/login');
     }
 
@@ -30,6 +34,10 @@ class AuthController extends Controller
 
     public function register()
     {
+        if (Auth::check()) {
+            return redirect('/drive');
+        }
+
     	return view('auth/register');
     }
 
@@ -56,6 +64,10 @@ class AuthController extends Controller
 
     public function forget()
     {
+        if (Auth::check()) {
+            return redirect('/drive');
+        }
+
     	return view('auth/forget');
     }
 
