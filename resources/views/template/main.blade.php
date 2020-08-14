@@ -33,11 +33,11 @@
                     <p class="text-white mt-6 text-lg">Primary Features</p>
                     <ul class="mt-3">
                         <li class="text-white flex items-center">
-                            <img src="{{ asset('icon') }}/storage.png" alt="Online Storage" width="18" class="mr-3">
+                            <img src="{{ asset('icon') }}/footer/storage.png" alt="Online Storage" class="mr-3">
                             Secondary Storage
                         </li>
                         <li class="text-white flex items-center mt-2">
-                            <img src="{{ asset('icon') }}/backup.png" alt="Online Storage" width="18" class="mr-3">
+                            <img src="{{ asset('icon') }}/footer/backup.png" alt="Online Storage" class="mr-3">
                             Backup Your Documents
                         </li>
                     </ul>
@@ -49,13 +49,13 @@
                     <ul class="mt-3">
                         <li class="text-white">
                             <a href="https://instagram.com/stanleyclaudius" target="_blank" class="flex items-center text-lg">
-                                <img src="{{ asset('icon') }}/instagram.png" alt="Online Storage" width="18" class="mr-3">
+                                <img src="{{ asset('icon') }}/footer/instagram.png" alt="Online Storage" class="mr-3">
                                 stanleyclaudius
                             </a>
                         </li>
                         <li class="text-white mt-2">
                             <a href="https://github.com/stanleyclaudius" target="_blank" class="flex items-center text-lg">
-                                <img src="{{ asset('icon') }}/github.png" alt="Online Storage" width="18" class="mr-3">
+                                <img src="{{ asset('icon') }}/footer/github.png" alt="Online Storage" class="mr-3">
                                 stanleyclaudius
                             </a>
                         </li>
@@ -65,6 +65,7 @@
         </div>
     </footer>
     
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 @yield('script')
 </body>
 </html>
