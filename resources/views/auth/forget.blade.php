@@ -9,7 +9,7 @@
 @section('content')
 <p class="text-3xl text-center">Forget Password</p>
 <p class="mt-1 mb-8 text-gray-500 text-center">Fill up your email you used to register <b>Online Storage</b> account</p>
-<form action="/forget" method="post" class="border border-gray-500 rounded p-6 mx-auto mb-20 w-64">
+<form action="/forget" method="post" class="border border-gray-500 rounded p-4 mx-auto mb-20 w-64">
 	@csrf
 	<div class="mb-6">
 		@if($errors->has('email'))

@@ -9,7 +9,7 @@
 @section('content')
 <p class="text-3xl text-center">Reset Password</p>
 <p class="mt-1 mb-8 text-gray-500 text-center">Choose your new password for <b>Online Storage</b> account</p>
-<form action="/reset" method="post" class="border border-gray-500 rounded p-6 mx-auto mb-20 w-64">
+<form action="/reset" method="post" class="border border-gray-500 rounded p-4 mx-auto mb-20 w-64">
 	@csrf
 	<div>
 		@if($errors->has('password'))
