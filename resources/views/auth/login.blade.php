@@ -7,6 +7,7 @@
 @endsection
 
 @section('content')
+<div class="flashdata" data-flash="{{ Session::get('auth') }}"></div>
 <p class="text-3xl text-center">Sign In</p>
 <p class="mt-1 mb-8 text-gray-500 text-center">Sign in to our platform to start backuping your documents</p>
 <form action="/login" method="post" class="border border-gray-500 rounded p-6 mx-auto mb-20" style="width: 35%;">
@@ -30,4 +31,9 @@
 	</div>
 	<button type="submit" class="bg-blue-500 text-white rounded px-3 py-2 transition duration-150 ease-in-out hover:bg-blue-600">Sign In</button>
 </form>
+@endsection
+
+@section('script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="{{ asset('js') }}/login.js"></script>
 @endsection

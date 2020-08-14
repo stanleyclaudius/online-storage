@@ -12,3 +12,9 @@ Route::get('/forget', 'AuthController@forget');
 Route::post('/forget', 'AuthController@postForget');
 Route::get('/reset', 'AuthController@reset');
 Route::post('/reset', 'AuthController@postReset');
+
+Route::group(['middleware' => 'auth'], function() {
+	Route::get('/logout', 'AuthController@logout');
+
+	Route::get('/drive', 'DriveController@index');
+});
