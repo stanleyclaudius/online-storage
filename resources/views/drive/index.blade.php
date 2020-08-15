@@ -48,19 +48,19 @@
 				<ul>
 					<li>
 						<a href="" class="flex items-center hover:text-blue-500 hover:font-semibold">
-							<img src="{{ asset('icon') }}/drive/storage.png" alt="Online Storage" width="20" class="mr-5">
+							<img src="{{ asset('icon') }}/drive/storage.png" alt="Online Storage" class="mr-5">
 							My Storage
 						</a>
 					</li>
 					<li class="mt-5">
 						<a href="" class="flex items-center hover:text-blue-500 hover:font-semibold">
-							<img src="{{ asset('icon') }}/drive/starred.png" alt="Online Storage" width="20" class="mr-5">
+							<img src="{{ asset('icon') }}/drive/starred.png" alt="Online Storage" class="mr-5">
 							Starred
 						</a>
 					</li>
 					<li class="mt-5">
 						<a href="" class="flex items-center hover:text-blue-500 hover:font-semibold">
-							<img src="{{ asset('icon') }}/drive/trash.png" alt="Online Storage" width="20" class="mr-5">
+							<img src="{{ asset('icon') }}/drive/trash.png" alt="Online Storage" class="mr-5">
 							Trash
 						</a>
 					</li>
@@ -70,7 +70,7 @@
 			<div class="px-10">
 				<ul>
 					<li class="flex items-center mt-5">
-						<img src="{{ asset('icon') }}/drive/storage-avail.png" alt="" width="20" class="mr-5">
+						<img src="{{ asset('icon') }}/drive/storage-avail.png" alt="" class="mr-5">
 						Storage Used
 					</li>
 					<li class="pl-10 mt-2 text-gray-500">
@@ -83,7 +83,7 @@
 				<ul>
 					<li class="mt-5">
 						<a href="" class="flex items-center hover:text-blue-500 hover:font-semibold">
-							<img src="{{ asset('icon') }}/drive/upload.png" alt="" width="20" class="mr-5">
+							<img src="{{ asset('icon') }}/drive/upload.png" alt="" class="mr-5">
 							Upload File
 						</a>
 					</li>
