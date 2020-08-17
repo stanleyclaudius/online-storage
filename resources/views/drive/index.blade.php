@@ -119,7 +119,7 @@
 								<div class="h-32 border-b border-gray-400">
 									
 								</div>
-								<a href="" class="hover:text-blue-600 hover:font-semibold">
+								<a href="" class="hover:text-blue-600">
 									<div class="flex items-center flex items-center h-16">
 										<p class="px-2">Lorem Ipsum Dolor Sit Amet Lorem Ipsum.</p>
 									</div>
