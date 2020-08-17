@@ -35,9 +35,15 @@
 				</form>
 			</div>
 			<div>
+				@if(auth()->user()->avatar == null)
 				<a href="">
 					<img src="{{ asset('avatar') }}/default.png" alt="Online Storage User Avatar" class="rounded-full border border-gray-500" width="40">
 				</a>
+				@else
+				<a href="">
+					<img src="{{ asset('avatar') }}/{{ auth()->user()->avatar }}" alt="Online Storage User Avatar" class="rounded-full border border-gray-500" width="40">
+				</a>
+				@endif
 			</div>
 		</div>
 	</nav>
