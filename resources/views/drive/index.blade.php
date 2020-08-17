@@ -109,7 +109,7 @@
 						<a href="">
 							<div class="h-48 rounded border border-gray-400">
 								<div class="h-32 border-b border-gray-400">
-									
+
 								</div>
 								<div class="flex items-center">
 									<p class="px-2 mt-2">Lorem Ipsum Dolor Sit Amet.</p>
@@ -120,7 +120,7 @@
 
 						<a href="">
 							<div class="h-48 rounded border border-gray-400">
-								<div class="h-32 border-b border-gray-400">
+							<div class="h-32 border-b border-gray-400">
 									
 								</div>
 								<div class="flex items-center">
