@@ -17,10 +17,6 @@
 			background-color: #e0e0e0;
 			outline: 1px solid slategrey;
 		}
-
-		input[type="file"] {
-			display: none;
-		}
 	</style>
 </head>
 <body>
@@ -87,7 +83,7 @@
 				<ul>
 					<li class="mt-5">
 						<form action="" method="post">
-							<input type="file" id="file">
+							<input type="file" id="file" class="hidden">
 							<label for="file" class="flex items-center hover:text-blue-500 hover:font-semibold" style="cursor: pointer;">
 								<img src="{{ asset('icon') }}/drive/upload.png" alt="Online Storage" class="mr-5">
 								Upload File
