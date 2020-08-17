@@ -106,17 +106,26 @@
 				<div>
 					<p class="font-semibold">25 December 2020</p>
 					<div class="grid grid-cols-4 gap-6 mt-4">
-						<a href="">
+						<div class="relative">
+							<div class="absolute top-0 right-0 pr-4 pt-3 flex items-center">
+								<a href="javascript:void(0)" class="mr-3" id="staricon">
+									<img src="{{ asset('icon') }}/file_container/star-black.png" alt="Online Storage" id="changestar">
+								</a>
+								<a href="" id="trashicon">
+									<img src="{{ asset('icon') }}/file_container/trash-black.png" alt="Online Storage" id="changetrash">
+								</a>
+							</div>
 							<div class="h-48 rounded border border-gray-400">
 								<div class="h-32 border-b border-gray-400">
-
+									
 								</div>
-								<div class="flex items-center">
-									<p class="px-2 mt-2">Lorem Ipsum Dolor Sit Amet.</p>
-								</div>
-								<p class="text-gray-500 mt-1 px-2">Word Document</p>
+								<a href="" class="hover:text-blue-600 hover:font-semibold">
+									<div class="flex items-center flex items-center h-16">
+										<p class="px-2">Lorem Ipsum Dolor Sit Amet Lorem Ipsum.</p>
+									</div>
+								</a>
 							</div>
-						</a>
+						</div>
 
 						<a href="">
 							<div class="h-48 rounded border border-gray-400">
@@ -204,6 +213,24 @@
 			</div>
 		</div>
 	</div>
-	
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script>
+	$(document).ready(function() {
+		$('#staricon').mouseover(function() {
+			$('#changestar').attr('src', "/icon/file_container/star-color.png");
+		});
+		$('#staricon').mouseleave(function() {
+			$('#changestar').attr('src', "/icon/file_container/star-black.png");
+		});
+
+		$('#trashicon').mouseover(function() {
+			$('#changetrash').attr('src', "/icon/file_container/trash-color.png");
+		});
+		$('#trashicon').mouseleave(function() {
+			$('#changetrash').attr('src', "/icon/file_container/trash-black.png");
+		});
+	});
+</script>
 </body>
 </html>
