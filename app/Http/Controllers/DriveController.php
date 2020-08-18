@@ -9,7 +9,13 @@ class DriveController extends Controller
 {
     public function index()
     {
-    	return view('drive/index');
+        $drives = Drive::where('user_id', auth()->user()->id)->orderBy('id', 'DESC')->get();
+        $dates = [];
+        foreach ($drives as $drive) {
+            array_push($dates, $drive->created_at->format('d M Y'));
+        }
+        $dates = array_unique($dates);
+    	return view('drive/index', compact(['drives', 'dates']));
     }
 
     public function uploadFile(Request $request)

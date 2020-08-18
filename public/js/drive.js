@@ -1,24 +1,31 @@
 $(document).ready(function() {
-	$('#staricon').mouseover(function() {
-		$('#changestar').attr('src', "/icon/file_container/star-color.png");
-	});
-	$('#staricon').mouseleave(function() {
-		$('#changestar').attr('src', "/icon/file_container/star-black.png");
-	});
+	for (let i = 1; i <= $('.actionbutton').length; i++) {
+		$('#downloadicon' + i).mouseover(function() {
+			$('#downloadchange' + i).attr('src', "/icon/file_container/download-color.png");
+		});
 
-	$('#trashicon').mouseover(function() {
-		$('#changetrash').attr('src', "/icon/file_container/trash-color.png");
-	});
-	$('#trashicon').mouseleave(function() {
-		$('#changetrash').attr('src', "/icon/file_container/trash-black.png");
-	});
+		$('#staricon' + i).mouseover(function() {
+			$('#changestar' + i).attr('src', "/icon/file_container/star-color.png");
+		});
 
-	$('#downloadicon').mouseover(function() {
-		$('#downloadchange').attr('src', "/icon/file_container/download-color.png");
-	});
-	$('#downloadicon').mouseleave(function() {
-		$('#downloadchange').attr('src', "/icon/file_container/download-black.png");
-	});
+		$('#trashicon' + i).mouseover(function() {
+			$('#changetrash' + i).attr('src', "/icon/file_container/trash-color.png");
+		});
+	}
+
+	for (let i = 1; i <= $('.actionbutton').length; i++) {
+		$('#downloadicon' + i).mouseleave(function() {
+			$('#downloadchange' + i).attr('src', "/icon/file_container/download-black.png");
+		});
+
+		$('#staricon' + i).mouseleave(function() {
+			$('#changestar' + i).attr('src', "/icon/file_container/star-black.png");
+		});
+
+		$('#trashicon' + i).mouseleave(function() {
+			$('#changetrash' + i).attr('src', "/icon/file_container/trash-black.png");
+		});
+	}
 
 	$('#file').on('change', function(e) {
 		let fileName = e.target.files[0].name;
