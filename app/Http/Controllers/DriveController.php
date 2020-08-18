@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Drive;
 
 class DriveController extends Controller
@@ -55,6 +56,6 @@ class DriveController extends Controller
     public function trashFile($id)
     {
     	$drive = Drive::find($id);
-    	$drive->update(['is_trash' => 1]);
+    	$drive->update(['is_trash' => 1, 'is_star' => 0]);
     }
 }

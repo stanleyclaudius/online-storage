@@ -47,7 +47,7 @@ $(document).ready(function() {
 					document.location.href = '/drive';
 				} else if (data === 'unstarred') {
 					$('#changestar' + dataImage).attr('src', "/icon/file_container/star-black.png");
-					document.location.href = '/drive';
+					document.location.href = '/drive';	
 				}
 			}
 		});
