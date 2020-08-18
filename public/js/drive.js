@@ -44,12 +44,23 @@ $(document).ready(function() {
 			success: function(data) {
 				if (data === 'starred') {
 					$('#changestar' + dataImage).attr('src', "/icon/file_container/star-color.png");
-					document.location.href = "/drive";
+					document.location.href = '/drive';
 				} else if (data === 'unstarred') {
 					$('#changestar' + dataImage).attr('src', "/icon/file_container/star-black.png");
-					document.location.href = "/drive";
+					document.location.href = '/drive';
 				}
 			}
 		});
 	})
+
+	$('.trashfile').click(function() {
+		let dataID = $(this).data('id');
+		$.ajax({
+			url: '/drive/trash/' + dataID,
+			type: 'get',
+			success: function() {
+				document.location.href = '/drive';
+			}
+		});
+	});
 });

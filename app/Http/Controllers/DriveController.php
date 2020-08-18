@@ -51,4 +51,10 @@ class DriveController extends Controller
             echo json_encode('starred');
         }
     }
+
+    public function trashFile($id)
+    {
+    	$drive = Drive::find($id);
+    	$drive->update(['is_trash' => 1]);
+    }
 }

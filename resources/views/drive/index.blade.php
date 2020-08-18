@@ -16,7 +16,7 @@
 				@if($drive->created_at->format('d M Y') === $date)
 				<div class="relative">
 					<div class="absolute top-0 right-0 pr-4 pt-3 flex items-center actionbutton">
-						<a href="" class="mr-3" id="downloadicon{{ $i }}">
+						<a href="/user_drive/{{ auth()->user()->id }}_{{ auth()->user()->username }}/{{ $drive->file_name }}" download class="mr-3" id="downloadicon{{ $i }}">
 							<img src="{{ asset('icon') }}/file_container/download-black.png" alt="Online Storage" id="downloadchange{{ $i }}">
 						</a>
 						@if($drive->is_star == 0)
@@ -28,7 +28,7 @@
 							<img src="{{ asset('icon') }}/file_container/star-color.png" alt="Online Storage" id="changestar{{ $i }}">
 						</a>
 						@endif
-						<a href="javascript:void(0)" id="trashicon{{ $i }}">
+						<a href="javascript:void(0)" class="trashfile" id="trashicon{{ $i }}" data-id="{{ $drive->id }}">
 							<img src="{{ asset('icon') }}/file_container/trash-black.png" alt="Online Storage" id="changetrash{{ $i }}">
 						</a>
 					</div>
