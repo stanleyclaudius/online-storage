@@ -162,6 +162,9 @@
 					<div class="grid grid-cols-4 gap-6 mt-4">
 						<div class="relative">
 							<div class="absolute top-0 right-0 pr-4 pt-3 flex items-center">
+								<a href="" class="mr-3" id="downloadicon">
+									<img src="{{ asset('icon') }}/file_container/download-black.png" alt="Online Storage" id="downloadchange">
+								</a>
 								<a href="javascript:void(0)" class="mr-3" id="staricon">
 									<img src="{{ asset('icon') }}/file_container/star-black.png" alt="Online Storage" id="changestar">
 								</a>
@@ -207,6 +210,13 @@
 		});
 		$('#trashicon').mouseleave(function() {
 			$('#changetrash').attr('src', "/icon/file_container/trash-black.png");
+		});
+
+		$('#downloadicon').mouseover(function() {
+			$('#downloadchange').attr('src', "/icon/file_container/download-color.png");
+		});
+		$('#downloadicon').mouseleave(function() {
+			$('#downloadchange').attr('src', "/icon/file_container/download-black.png");
 		});
 
 		$('#file').on('change', function(e) {
