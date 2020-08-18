@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\User;
@@ -51,13 +52,16 @@ class AuthController extends Controller
             'password_confirmation' => 'required|min:6',
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'remember_token' => Str::random(10),
         ]);
+
+        $path = public_path().'/user_drive/' . $user->id . '_' . $user->username;
+        File::makeDirectory($path, $mode = 0777, true, true);
 
         return redirect('/login')->with('auth', 'account created');
     }

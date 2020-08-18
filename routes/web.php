@@ -17,4 +17,5 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/logout', 'AuthController@logout');
 
 	Route::get('/drive', 'DriveController@index');
+	Route::post('/drive/upload', 'DriveController@uploadFile');
 });
