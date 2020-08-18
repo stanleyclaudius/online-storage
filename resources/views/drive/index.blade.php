@@ -134,7 +134,7 @@
 							$storageUsed = DB::table('drives')->where('user_id', auth()->user()->id);
 							$storageCount = number_format($storageUsed->sum('file_size'), 2);
 						@endphp
-						@if($storageUsed)
+						@if($storageUsed->count() > 0)
 							{{ $storageCount }} MB of 10 GB	
 						@else
 							0 MB of 10 GB
