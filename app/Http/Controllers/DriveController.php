@@ -9,7 +9,7 @@ class DriveController extends Controller
 {
     public function index()
     {
-        $drives = Drive::where('user_id', auth()->user()->id)->orderBy('id', 'DESC')->get();
+        $drives = Drive::where('user_id', auth()->user()->id)->where('is_trash', 0)->orderBy('id', 'DESC')->get();
         $dates = [];
         foreach ($drives as $drive) {
             array_push($dates, $drive->created_at->format('d M Y'));
