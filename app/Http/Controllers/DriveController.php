@@ -39,4 +39,16 @@ class DriveController extends Controller
 
     	return redirect()->back()->with('drive', 'file upload successful');
     }
+
+    public function starredDrive($id)
+    {
+        $drive = Drive::find($id);
+        if ($drive->is_star == 1) {
+            $drive->update(['is_star' => 0]);
+            echo json_encode('unstarred');
+        } else {
+            $drive->update(['is_star' => 1]);
+            echo json_encode('starred');
+        }
+    }
 }

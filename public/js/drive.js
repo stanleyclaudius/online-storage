@@ -33,4 +33,23 @@ $(document).ready(function() {
 		$('.uploadfilebutton').attr('for', '');
 		$('form').submit();
 	});
+
+	$('.starredfile').click(function() {
+		let dataID = $(this).data('id');
+		let dataImage = $(this).data('iterate');
+		$.ajax({
+			url: '/drive/star/' + dataID,
+			type: 'get',
+			dataType: 'json',
+			success: function(data) {
+				if (data === 'starred') {
+					$('#changestar' + dataImage).attr('src', "/icon/file_container/star-color.png");
+					document.location.href = "/drive";
+				} else {
+					$('#changestar' + dataImage).attr('src', "/icon/file_container/star-black.png");
+					document.location.href = "/drive";
+				}
+			}
+		});
+	})
 });
