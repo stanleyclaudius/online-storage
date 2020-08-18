@@ -28,7 +28,21 @@
 				</div>
 				<div class="h-48 rounded border border-gray-400">
 					<div class="h-32 border-b border-gray-400 pl-3 pr-32 py-4">
+						@if(($drive->file_type == 'xls') || ($drive->file_type == 'xlsx'))
+						<img src="{{ asset('icon') }}/type_icon/excel.png" alt="" class="w-full h-full">
+						@endif
+						@if(($drive->file_type == 'ppt') || ($drive->file_type == 'pptx'))
+						<img src="{{ asset('icon') }}/type_icon/powerpoint.png" alt="" class="w-full h-full">
+						@endif
+						@if($drive->file_type == 'pdf')
+						<img src="{{ asset('icon') }}/type_icon/pdf.png" alt="" class="w-full h-full">
+						@endif
+						@if(($drive->file_type == 'jpg') || ($drive->file_type == 'jpeg') || ($drive->file_type == 'png') || ($drive->file_type == 'gif') || ($drive->file_type == 'JPG'))
 						<img src="{{ asset('icon') }}/type_icon/image.png" alt="" class="w-full h-full">
+						@endif
+						@if(($drive->file_type == 'doc') || ($drive->file_type == 'docx'))
+						<img src="{{ asset('icon') }}/type_icon/word.png" alt="" class="w-full h-full">
+						@endif
 					</div>
 					<a href="" class="hover:text-blue-600">
 						<div class="flex items-center items-center h-16">
