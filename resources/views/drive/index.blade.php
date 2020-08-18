@@ -130,7 +130,15 @@
 						Storage Used
 					</li>
 					<li class="pl-10 mt-2 text-gray-500">
-						203 MB of 10 GB	
+						@php
+							$storageUsed = DB::table('drives')->where('user_id', auth()->user()->id);
+							$storageCount = number_format($storageUsed->sum('file_size'), 2);
+						@endphp
+						@if($storageUsed)
+							{{ $storageCount }} MB of 10 GB	
+						@else
+							0 MB of 10 GB
+						@endif
 					</li>
 				</ul>
 			</div>
@@ -141,7 +149,7 @@
 						<form action="/drive/upload" method="post" enctype="multipart/form-data">
 							@csrf
 							<input type="file" id="file" class="hidden" name="uploadfile">
-							<label for="file" class="flex items-center hover:text-blue-500 hover:font-semibold" style="cursor: pointer;">
+							<label for="file" class="uploadfilebutton flex items-center hover:text-blue-500 hover:font-semibold" style="cursor: pointer;">
 								<img src="{{ asset('icon') }}/drive/upload.png" alt="Online Storage" class="mr-5">
 								<p class="filelabel">Upload File</p>
 							</label>
@@ -222,6 +230,7 @@
 		$('#file').on('change', function(e) {
 			let fileName = e.target.files[0].name;
 			$('.filelabel').html(fileName);
+			$('.uploadfilebutton').attr('for', '');
 			$('form').submit();
 		});
 	});
