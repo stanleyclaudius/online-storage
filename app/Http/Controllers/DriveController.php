@@ -35,7 +35,7 @@ class DriveController extends Controller
         } else {
             $userDrive = Drive::where('user_id', auth()->user()->id)->sum('file_size');
             $storageUsed = number_format($userDrive, 2);
-            if ($storageUsed + $fileSize >= 10000) {
+            if ($storageUsed + $fileSize > 10000) {
                 return redirect('/drive')->with('drive', 'overload storage');
             } else {
                 Drive::create([
