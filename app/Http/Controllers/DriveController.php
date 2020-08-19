@@ -22,23 +22,30 @@ class DriveController extends Controller
     public function uploadFile(Request $request)
     {
     	$this->validate($request, [
-    		'uploadfile' => 'mimes:jpg,jpeg,png,gif,JPG,doc,docx,xls,xlsx,ppt,pptx,pdf,txt'
+    		'uploadfile' => 'mimes:jpg,jpeg,png,gif,JPG,doc,docx,xls,xlsx,ppt,pptx,pdf,txt,zip'
     	]);
 
     	$fileSize = number_format($request->file('uploadfile')->getSize()/1048576, 2);
 
-    	Drive::create([
-    		'user_id' => auth()->user()->id,
-    		'file_name' => $request->file('uploadfile')->getClientOriginalName(),
-    		'file_type' => $request->file('uploadfile')->extension(),
-    		'file_size' => $fileSize,
-    		'is_star' => 0,
-    		'is_trash' => 0,
-    	]);
+        $fileName = $request->file('uploadfile')->getClientOriginalName();
+        $checkDrive = Drive::where('user_id', auth()->user()->id)->where('file_name', $fileName)->get()->first();
 
-    	$request->file('uploadfile')->move('user_drive/' . auth()->user()->id . '_' . auth()->user()->username, $request->file('uploadfile')->getClientOriginalName());
+        if ($checkDrive != null) {
+            return redirect('/drive')->with('drive', 'file exists');
+        } else {
+            Drive::create([
+                'user_id' => auth()->user()->id,
+                'file_name' => $request->file('uploadfile')->getClientOriginalName(),
+                'file_type' => $request->file('uploadfile')->extension(),
+                'file_size' => $fileSize,
+                'is_star' => 0,
+                'is_trash' => 0,
+            ]);
 
-    	return redirect('/drive')->with('drive', 'file upload successful');
+            $request->file('uploadfile')->move('user_drive/' . auth()->user()->id . '_' . auth()->user()->username, $request->file('uploadfile')->getClientOriginalName());
+
+            return redirect('/drive')->with('drive', 'file upload successful');
+        }
     }
 
     public function starredDrive($id)

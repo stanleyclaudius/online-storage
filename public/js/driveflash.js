@@ -17,4 +17,10 @@ if (flashdata === 'file upload successful') {
 		text: 'Your file has been deleted from your Online Storage!',
 		icon: 'success'
 	});
+} else if (flashdata === 'file exists') {
+	swal.fire({
+		title: 'File Exists',
+		text: 'Change your file name at your local computer to unique name!',
+		icon: 'warning'
+	});
 }
