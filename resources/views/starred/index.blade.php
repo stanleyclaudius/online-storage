@@ -1,8 +1,8 @@
 @extends('template/drive')
 
-@section('title', 'Online Storage | My Drive')
+@section('title', 'Online Storage | Starred File')
 
-@section('content-title', 'My Storage')
+@section('content-title', 'Starred')
 
 @section('content')
 @foreach($dates as $date)
@@ -71,5 +71,5 @@
 @endsection
 
 @section('script')
-<script src="{{ asset('js') }}/drive.js"></script>
+<script src="{{ asset('js') }}/starred.js"></script>
 @endsection

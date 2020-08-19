@@ -20,4 +20,6 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::post('/drive/upload', 'DriveController@uploadFile');
 	Route::get('/drive/star/{id}', 'DriveController@starredDrive');
 	Route::get('/drive/trash/{id}', 'DriveController@trashFile');
+
+	Route::get('/starred', 'StarController@index');
 });

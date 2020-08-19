@@ -103,13 +103,13 @@
 			<div class="px-10">
 				<ul>
 					<li>
-						<a href="" class="flex items-center hover:text-blue-500 hover:font-semibold">
+						<a href="/drive" class="flex items-center hover:text-blue-500 hover:font-semibold">
 							<img src="{{ asset('icon') }}/drive/storage.png" alt="Online Storage" class="mr-5">
 							My Storage
 						</a>
 					</li>
 					<li class="mt-5">
-						<a href="" class="flex items-center hover:text-blue-500 hover:font-semibold">
+						<a href="/starred" class="flex items-center hover:text-blue-500 hover:font-semibold">
 							<img src="{{ asset('icon') }}/drive/starred.png" alt="Online Storage" class="mr-5">
 							Starred
 						</a>
@@ -177,6 +177,15 @@
 	function dropDownFunction() {
 		document.getElementById("myDropdown").classList.toggle("show");
 	}
+
+	$(document).ready(function() {
+		$('#file').on('change', function(e) {
+			let fileName = e.target.files[0].name;
+			$('.filelabel').html(fileName);
+			$('.uploadfilebutton').attr('for', '');
+			$('form').submit();
+		});
+	});
 </script>
 @yield('script')
 </body>

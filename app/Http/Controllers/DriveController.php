@@ -22,7 +22,7 @@ class DriveController extends Controller
     public function uploadFile(Request $request)
     {
     	$this->validate($request, [
-    		'uploadfile' => 'mimes:jpg,jpeg,png,gif,JPG,doc,docx,xls,xlsx,ppt,pptx,pdf'
+    		'uploadfile' => 'mimes:jpg,jpeg,png,gif,JPG,doc,docx,xls,xlsx,ppt,pptx,pdf,txt'
     	]);
 
     	$fileSize = number_format($request->file('uploadfile')->getSize()/1048576, 2);
