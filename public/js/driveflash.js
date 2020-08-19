@@ -23,4 +23,10 @@ if (flashdata === 'file upload successful') {
 		text: 'Change your file name at your local computer to unique name!',
 		icon: 'warning'
 	});
+} else if (flashdata === 'overload storage') {
+	swal.fire({
+		title: 'Storage Overload',
+		text: 'Your upload file when uploading has reach the max storage given!',
+		icon: 'error'
+	});
 }

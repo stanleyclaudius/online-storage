@@ -33,18 +33,24 @@ class DriveController extends Controller
         if ($checkDrive != null) {
             return redirect('/drive')->with('drive', 'file exists');
         } else {
-            Drive::create([
-                'user_id' => auth()->user()->id,
-                'file_name' => $request->file('uploadfile')->getClientOriginalName(),
-                'file_type' => $request->file('uploadfile')->extension(),
-                'file_size' => $fileSize,
-                'is_star' => 0,
-                'is_trash' => 0,
-            ]);
+            $userDrive = Drive::where('user_id', auth()->user()->id)->sum('file_size');
+            $storageUsed = number_format($userDrive, 2);
+            if ($storageUsed + $fileSize >= 10000) {
+                return redirect('/drive')->with('drive', 'overload storage');
+            } else {
+                Drive::create([
+                    'user_id' => auth()->user()->id,
+                    'file_name' => $request->file('uploadfile')->getClientOriginalName(),
+                    'file_type' => $request->file('uploadfile')->extension(),
+                    'file_size' => $fileSize,
+                    'is_star' => 0,
+                    'is_trash' => 0,
+                ]);
 
-            $request->file('uploadfile')->move('user_drive/' . auth()->user()->id . '_' . auth()->user()->username, $request->file('uploadfile')->getClientOriginalName());
+                $request->file('uploadfile')->move('user_drive/' . auth()->user()->id . '_' . auth()->user()->username, $request->file('uploadfile')->getClientOriginalName());
 
-            return redirect('/drive')->with('drive', 'file upload successful');
+                return redirect('/drive')->with('drive', 'file upload successful');
+            }
         }
     }
 
