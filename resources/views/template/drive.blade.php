@@ -115,7 +115,7 @@
 						</a>
 					</li>
 					<li class="mt-5">
-						<a href="" class="flex items-center hover:text-blue-500 hover:font-semibold">
+						<a href="/trash" class="flex items-center hover:text-blue-500 hover:font-semibold">
 							<img src="{{ asset('icon') }}/drive/trash.png" alt="Online Storage" class="mr-5">
 							Trash
 						</a>

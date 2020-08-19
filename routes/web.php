@@ -22,4 +22,8 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/drive/trash/{id}', 'DriveController@trashFile');
 
 	Route::get('/starred', 'StarController@index');
+
+	Route::get('/trash', 'TrashController@index');
+	Route::get('/trash/restore/{id}', 'TrashController@restoreFile');
+	Route::get('/trash/delete/{id}', 'TrashController@deleteFile');
 });
