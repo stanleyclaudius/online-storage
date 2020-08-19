@@ -102,24 +102,7 @@
 		<div>
 			<div class="px-10">
 				<ul>
-					<li>
-						<a href="/drive" class="flex items-center hover:text-blue-500 hover:font-semibold">
-							<img src="{{ asset('icon') }}/drive/storage.png" alt="Online Storage" class="mr-5">
-							My Storage
-						</a>
-					</li>
-					<li class="mt-5">
-						<a href="/starred" class="flex items-center hover:text-blue-500 hover:font-semibold">
-							<img src="{{ asset('icon') }}/drive/starred.png" alt="Online Storage" class="mr-5">
-							Starred
-						</a>
-					</li>
-					<li class="mt-5">
-						<a href="/trash" class="flex items-center hover:text-blue-500 hover:font-semibold">
-							<img src="{{ asset('icon') }}/drive/trash.png" alt="Online Storage" class="mr-5">
-							Trash
-						</a>
-					</li>
+					@yield('navbar-link')
 				</ul>
 			</div>
 			<hr class="mt-5">
@@ -150,7 +133,7 @@
 							@csrf
 							<input type="file" id="file" class="hidden" name="uploadfile">
 							<label for="file" class="uploadfilebutton flex items-center hover:text-blue-500 hover:font-semibold" style="cursor: pointer;">
-								<img src="{{ asset('icon') }}/drive/upload.png" alt="Online Storage" class="mr-5">
+								<img src="{{ asset('icon') }}/drive/upload.png" alt="Online Storage" class="mr-5 uploadfileimage">
 								<p class="filelabel">Upload File</p>
 							</label>
 							@if($errors->has('uploadfile'))
@@ -184,6 +167,34 @@
 			$('.filelabel').html(fileName);
 			$('.uploadfilebutton').attr('for', '');
 			$('form').submit();
+		});
+
+		$('.uploadfilebutton').mouseover(function() {
+			$('.uploadfileimage').attr('src', "/icon/drive/upload-color.png");
+		});
+		$('.uploadfilebutton').mouseleave(function() {
+			$('.uploadfileimage').attr('src', "/icon/drive/upload.png");
+		});
+
+		$('.storagelabel').mouseover(function() {
+			$('.storageimage').attr('src', "/icon/drive/storage-color.png");
+		});
+		$('.storagelabel').mouseleave(function() {
+			$('.storageimage').attr('src', "/icon/drive/storage.png");
+		});
+
+		$('.starlabel').mouseover(function() {
+			$('.starimage').attr('src', "/icon/drive/star-color.png");
+		});
+		$('.starlabel').mouseleave(function() {
+			$('.starimage').attr('src', "/icon/drive/starred.png");
+		});
+
+		$('.trashlabel').mouseover(function() {
+			$('.trashimage').attr('src', "/icon/drive/trash-color.png");
+		});
+		$('.trashlabel').mouseleave(function() {
+			$('.trashimage').attr('src', "/icon/drive/trash.png");
 		});
 	});
 </script>
