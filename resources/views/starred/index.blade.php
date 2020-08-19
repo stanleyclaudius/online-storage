@@ -26,7 +26,7 @@
 @section('content-title', 'Starred')
 
 @section('content')
-@if(count($dates)) > 0)
+@if(count($dates) > 0)
 	@foreach($dates as $date)
 		<div class="mb-10">
 			<p class="font-semibold">{{ $date }}</p>
