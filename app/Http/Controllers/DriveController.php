@@ -38,7 +38,7 @@ class DriveController extends Controller
 
     	$request->file('uploadfile')->move('user_drive/' . auth()->user()->id . '_' . auth()->user()->username, $request->file('uploadfile')->getClientOriginalName());
 
-    	return redirect()->back()->with('drive', 'file upload successful');
+    	return redirect('/drive')->with('drive', 'file upload successful');
     }
 
     public function starredDrive($id)
