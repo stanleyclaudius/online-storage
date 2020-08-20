@@ -11,7 +11,24 @@
 				<div class="hover:bg-gray-200 @if(!$loop->last) border-b border-gray-400 @endif">
 					<li class="p-3 flex items-center justify-between" @if ($loop->last) @keydown.tab="isOpen = false" @endif>
 						<div class="flex items-center">
+							@if(($drive->file_type == 'xls') || ($drive->file_type == 'xlsx'))
 							<img src="{{ asset('icon') }}/type_icon/excel.png" alt="Online Storage" width="40" class="mr-3">
+							@endif
+							@if(($drive->file_type == 'ppt') || ($drive->file_type == 'pptx'))
+							<img src="{{ asset('icon') }}/type_icon/powerpoint.png" alt="Online Storage" width="40" class="mr-3">
+							@endif
+							@if($drive->file_type == 'pdf')
+							<img src="{{ asset('icon') }}/type_icon/pdf.png" alt="Online Storage" width="40" class="mr-3">
+							@endif
+							@if(($drive->file_type == 'jpg') || ($drive->file_type == 'jpeg') || ($drive->file_type == 'png') || ($drive->file_type == 'gif') || ($drive->file_type == 'JPG'))
+							<img src="{{ asset('icon') }}/type_icon/image.png" alt="Online Storage" width="40" class="mr-3">
+							@endif
+							@if(($drive->file_type == 'doc') || ($drive->file_type == 'docx'))
+							<img src="{{ asset('icon') }}/type_icon/word.png" alt="Online Storage" width="40" class="mr-3">
+							@endif
+							@if($drive->file_type == 'txt')
+							<img src="{{ asset('icon') }}/type_icon/txt.png" alt="Online Storage" width="40" class="mr-3">
+							@endif
 							{{ $drive->file_name }}
 						</div>
 						<div class="flex items-center">
