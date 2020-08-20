@@ -21,12 +21,11 @@ class DriveController extends Controller
 
     public function uploadFile(Request $request)
     {
-    	$this->validate($request, [
-    		'uploadfile' => 'mimes:jpg,jpeg,png,gif,JPG,doc,docx,xls,xlsx,ppt,pptx,pdf,txt,zip'
-    	]);
+        $this->validate($request, [
+            'uploadfile' => 'file|mimes:jpg,jpeg,png,gif,JPG,doc,docx,xls,xlsx,ppt,pptx,pdf,txt',
+        ]);
 
-    	$fileSize = number_format($request->file('uploadfile')->getSize()/1048576, 2);
-
+        $fileSize = number_format($request->file('uploadfile')->getSize()/1048576, 2);
         $fileName = $request->file('uploadfile')->getClientOriginalName();
         $checkDrive = Drive::where('user_id', auth()->user()->id)->where('file_name', $fileName)->get()->first();
 

@@ -22,7 +22,7 @@ class AuthController extends Controller
     public function postLogin(Request $request)
     {
         $this->validate($request, [
-            'username' => 'required',
+            'username' => 'required|alpha_dash',
             'password' => 'required|min:6',
         ]);
 
@@ -47,7 +47,7 @@ class AuthController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'username' => 'required|unique:users',
+            'username' => 'required|unique:users|alpha_dash',
             'password' => 'required|min:6|confirmed',
             'password_confirmation' => 'required|min:6',
         ]);

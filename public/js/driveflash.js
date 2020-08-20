@@ -29,4 +29,10 @@ if (flashdata === 'file upload successful') {
 		text: 'Your upload file when uploading has reach the max storage given!',
 		icon: 'error'
 	});
+} else if (flashdata === 'extension error') {
+	swal.fire({
+		title: 'Failed Upload File',
+		text: 'You can only upload image, word document, excel document, powerpoint document, PDF document, and text file!',
+		icon: 'error'
+	});
 }
