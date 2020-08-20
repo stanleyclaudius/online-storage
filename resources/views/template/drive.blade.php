@@ -115,10 +115,18 @@
 					<li class="pl-10 mt-2 text-gray-500">
 						@php
 							$storageUsed = DB::table('drives')->where('user_id', auth()->user()->id);
-							$storageCount = number_format($storageUsed->sum('file_size'), 2);
+							$storageCount = $storageUsed->sum('file_size');
 						@endphp
 						@if($storageUsed->count() > 0)
-							{{ $storageCount }} MB of 10 GB	
+							@if($storageCount >= 1000.00)
+								@php
+									$storageCountGB = $storageCount / 1000;
+									$storageCountGB = number_format($storageCountGB, 2);
+								@endphp
+								{{ $storageCountGB }} GB of 10 GB	
+							@else
+								{{ $storageCount }} MB of 10 GB	
+							@endif
 						@else
 							0 MB of 10 GB
 						@endif
