@@ -35,4 +35,10 @@ if (flashdata === 'file upload successful') {
 		text: 'You can only upload image, word document, excel document, powerpoint document, PDF document, and text file!',
 		icon: 'error'
 	});
+} else if (flashdata === 'user updated') {
+	swal.fire({
+		title: 'Profile Updated',
+		text: 'Your profile has been updated!',
+		icon: 'success'
+	});
 }

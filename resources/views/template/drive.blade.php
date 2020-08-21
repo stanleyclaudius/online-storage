@@ -73,17 +73,17 @@
 							<img src="{{ asset('avatar') }}/default.png" alt="Online Storage User Avatar" class="rounded-full border border-gray-500" width="40">
 						</button>
 						<div id="myDropdown" class="dropdown-content">
-							<a href="#">{{ auth()->user()->name }}</a>
+							<a href="javascript:void(0)" id="editprofilemodal">{{ auth()->user()->name }}</a>
 							<a href="/logout">Logout</a>
 						</div>
 					</div>
 				@else
-					<div class="dropdown">
+					<div class="dropdown focus:outline-none">
 						<button onclick="dropDownFunction()" class="dropbtn">
 							<img src="{{ asset('avatar') }}/{{ auth()->user()->avatar }}" alt="Online Storage User Avatar" class="rounded-full border border-gray-500" width="40">
 						</button>
 						<div id="myDropdown" class="dropdown-content">
-							<a href="#">{{ auth()->user()->name }}</a>
+							<a href="javascript:void(0)" id="editprofilemodal">{{ auth()->user()->name }}</a>
 							<a href="/logout">Logout</a>
 						</div>
 					</div>
@@ -155,6 +155,55 @@
 		</div>
 	</div>
 
+	<div id="modalbox" style="position: fixed; top: 0; left: 0; bottom: 0; right: 0; background-color: rgba(0,0,0,.4);" class="hidden flex items-center justify-content-center" x-data="{ isOpen: true }" @click.away="isOpen = false">
+		<div class="w-100 mx-auto bg-white rounded">
+			<p class="text-2xl border-b text-gray-800 border-gray-400 py-3 px-5">Edit Profile</p>
+			<div class="px-5 py-3">
+				<form action="/user/edit" method="post" enctype="multipart/form-data">
+					@csrf
+					<div>
+						<label for="name" class="text-gray-700">Name</label>
+						<input type="text" id="name" name="name" class="rounded w-full px-3 mt-2 h-10 border border-gray-500 focus:outline-none" value="{{ auth()->user()->name }}" placeholder="Name" autofocus>
+						@if($errors->has('name'))
+							<p class="text-sm text-red-500">{{ $errors->first('name') }}</p>
+						@endif
+					</div>
+					<div class="mt-4">
+						<label for="username" class="text-gray-700">Username</label>
+						<input type="text" id="username" name="username" class="bg-gray-200 rounded w-full px-3 mt-2 h-10 border border-gray-500 focus:outline-none" value="{{ auth()->user()->username }}" placeholder="Your username" readonly>
+					</div>
+					<div class="mt-4">
+						<label for="email" class="text-gray-700">Email</label>
+						<input type="text" id="email" name="email" class="bg-gray-200 rounded w-full px-3 mt-2 h-10 border border-gray-500 focus:outline-none" value="{{ auth()->user()->email }}" placeholder="Your email" readonly>
+					</div>
+					<div class="mt-4">
+						<label for="avatar" class="text-gray-700">Avatar</label>
+						<div class="grid grid-cols-4 gap-10 mt-2">
+							<div class="w-full border border-gray-400">
+								@if(auth()->user()->avatar == null)
+									<img src="{{ asset('avatar') }}/default.png" alt="Online Storage User" class="imagefinal">
+								@else
+									<img src="{{ asset('avatar') }}/{{ auth()->user()->avatar }}" alt="Online Storage User">
+								@endif
+							</div>
+							<div class="col-span-3">
+								<input type="file" name="avatar" id="avatar" class="border border-gray-400 rounded w-full p-3 focus:outline-none">
+								@if($errors->has('avatar'))
+									@if($errors->has('avatar'))
+										<p class="text-sm text-red-500">{{ $errors->first('avatar') }}</p>
+									@endif
+								@endif
+							</div>
+						</div>
+					</div>
+					<div class="mt-4">
+						<button type="submit" class="rounded px-3 py-2 text-white bg-blue-500 transition duration-150 ease-in-out hover:bg-blue-700">Save Changes</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -199,6 +248,17 @@
 		});
 		$('.trashlabel').mouseleave(function() {
 			$('.trashimage').attr('src', "/icon/drive/trash.png");
+		});
+
+		$('#editprofilemodal').click(function() {
+			$('#myDropdown').removeClass('show');
+			$('#modalbox').removeClass('hidden');
+		});
+
+		$('html').keyup(function(e) {
+			if (e.keyCode == 27) {
+				$('#modalbox').addClass('hidden');	
+			}
 		});
 	});
 </script>

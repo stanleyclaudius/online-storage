@@ -26,4 +26,6 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/trash', 'TrashController@index');
 	Route::get('/trash/restore/{id}', 'TrashController@restoreFile');
 	Route::get('/trash/delete/{id}', 'TrashController@deleteFile');
+
+	Route::post('/user/edit', 'UserController@editProfile');
 });
