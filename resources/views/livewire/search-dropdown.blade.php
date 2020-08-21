@@ -7,6 +7,9 @@
 		<div class="absolute rounded w-full bg-gray-100 border border-gray-400 mt-5" style="top: 100%; z-index: 9999;" x-show.transition.opacity="isOpen" @keydown.escape.window="isOpen = false">
 			@if($drives->count() > 0)
 			<ul>
+				@php
+					$i = 1;
+				@endphp
 				@foreach($drives as $drive)
 				<div class="hover:bg-gray-200 @if(!$loop->last) border-b border-gray-400 @endif">
 					<li class="p-3 flex items-center justify-between" @if ($loop->last) @keydown.tab="isOpen = false" @endif>
@@ -31,19 +34,22 @@
 							@endif
 							{{ $drive->file_name }}
 						</div>
-						<div class="flex items-center">
-							<a href="" class="mr-3">
-								<img src="{{ asset('icon') }}/file_container/download-black.png" alt="Online Storage">
-							</a>
-							<a href="" class="mr-3">
-								<img src="{{ asset('icon') }}/file_container/star-black.png" alt="Online Storage">
-							</a>
-							<a href="">
-								<img src="{{ asset('icon') }}/file_container/trash-black.png" alt="Online Storage">
-							</a>
+						<div class="flex items-center search-container">
+							@if($drive->is_trash == 1)
+								<a href="/trash/restore/{{ $drive->id }}" class="mr-3">
+									<img src="{{ asset('icon') }}/file_container/restore-black.png" alt="Online Storage">
+								</a>
+							@else
+								<a href="/user_drive/{{ auth()->user()->id }}_{{ auth()->user()->username }}/{{ $drive->file_name }}" download class="mr-3" id="downloadiconsearch{{ $i }}">
+									<img src="{{ asset('icon') }}/file_container/download-black.png" alt="Online Storage" id="downloadchangesearch{{ $i }}">
+								</a>
+							@endif
 						</div>
 					</li>
 				</div>
+				@php
+					$i++;
+				@endphp
 				@endforeach
 			</ul>
 			@else
