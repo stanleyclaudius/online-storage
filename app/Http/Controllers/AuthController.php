@@ -66,30 +66,6 @@ class AuthController extends Controller
         return redirect('/login')->with('auth', 'account created');
     }
 
-    public function forget()
-    {
-        if (Auth::check()) {
-            return redirect('/drive');
-        }
-
-    	return view('auth/forget');
-    }
-
-    public function postForget(Request $request)
-    {
-
-    }
-
-    public function reset()
-    {
-        return view('auth/reset');
-    }
-
-    public function postReset(Request $request)
-    {
-
-    }
-
     public function logout()
     {
         Auth::logout();
