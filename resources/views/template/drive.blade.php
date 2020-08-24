@@ -157,7 +157,10 @@
 
 	<div id="modalbox" style="position: fixed; top: 0; left: 0; bottom: 0; right: 0; background-color: rgba(0,0,0,.4);" class="hidden flex items-center justify-content-center" x-data="{ isOpen: true }" @click.away="isOpen = false">
 		<div class="w-100 mx-auto bg-white rounded">
-			<p class="text-2xl border-b text-gray-800 border-gray-400 py-3 px-5">Edit Profile</p>
+			<p class="text-2xl border-b text-gray-800 border-gray-400 py-3 px-5 flex items-center justify-between">
+				Edit Profile
+				<a href="javascript:void(0)" class="closemodal font-bold text-xl">X</a>
+			</p>
 			<div class="px-5 py-3">
 				<form action="/user/edit" method="post" enctype="multipart/form-data">
 					@csrf
@@ -259,6 +262,10 @@
 			if (e.keyCode == 27) {
 				$('#modalbox').addClass('hidden');	
 			}
+		});
+
+		$('.closemodal').click(function() {
+			$('#modalbox').addClass('hidden');
 		});
 	});
 </script>
