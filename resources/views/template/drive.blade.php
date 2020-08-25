@@ -51,7 +51,7 @@
 		}
 
 		.dropdown-content a:hover,
-		.dropdown-content a:hover {
+		.dropdown-content-mobile a:hover {
 			background-color: #ddd;
 		}
 
@@ -80,7 +80,7 @@
 						@endif
 					</button>
 					<div id="myDropdown-mobile" class="dropdown-content-mobile block sm:block md:block lg:hidden">
-						<a href="javascript:void(0)" id="editprofilemodal">{{ auth()->user()->name }}</a>
+						<a href="javascript:void(0)" class="editprofilemodal">{{ auth()->user()->name }}</a>
 						<a href="/logout">Logout</a>
 					</div>
 				</div>
@@ -93,7 +93,7 @@
 							<img src="{{ asset('avatar') }}/default.png" alt="Online Storage User Avatar" class="rounded-full border border-gray-500" width="40">
 						</button>
 						<div id="myDropdown" class="dropdown-content">
-							<a href="javascript:void(0)" id="editprofilemodal">{{ auth()->user()->name }}</a>
+							<a href="javascript:void(0)" class="editprofilemodal">{{ auth()->user()->name }}</a>
 							<a href="/logout">Logout</a>
 						</div>
 					</div>
@@ -304,8 +304,9 @@
 			$('.trashimage').attr('src', "/icon/drive/trash.png");
 		});
 
-		$('#editprofilemodal').click(function() {
+		$('.editprofilemodal').click(function() {
 			$('#myDropdown').removeClass('show');
+			$('#myDropdown-mobile').removeClass('show');
 			$('#modalbox').removeClass('hidden');
 		});
 
