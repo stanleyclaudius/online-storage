@@ -131,7 +131,7 @@
 			<div class="px-10">
 				<ul>
 					<li class="mt-5">
-						<form action="/drive/upload" method="post" enctype="multipart/form-data">
+						<form action="/drive/upload" method="post" enctype="multipart/form-data" class="uploadfileform">
 							@csrf
 							<input type="file" id="file" class="hidden" name="uploadfile">
 							<label for="file" class="uploadfilebutton flex items-center hover:text-blue-500 hover:font-semibold" style="cursor: pointer;">
@@ -222,7 +222,7 @@
 			let fileName = e.target.files[0].name;
 			$('.filelabel').html(fileName);
 			$('.uploadfilebutton').attr('for', '');
-			$('form').submit();
+			$('.uploadfileform').submit();
 		});
 
 		$('.uploadfilebutton').mouseover(function() {
