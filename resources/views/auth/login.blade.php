@@ -27,7 +27,6 @@
 			<label for="password">Password</label>
 		@endif
 		<input type="password" id="password" name="password" class="mb-1 w-full px-3 rounded h-10 border border-gray-500 focus:shadow-outline focus:outline-none mt-2" placeholder="Your password">
-		<a href="/forget" class="text-blue-600">Forget password?</a>
 	</div>
 	<button type="submit" class="bg-blue-500 text-white rounded px-3 py-2 transition duration-150 ease-in-out hover:bg-blue-600">Sign In</button>
 </form>
