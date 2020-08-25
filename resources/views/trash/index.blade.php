@@ -23,6 +23,11 @@
 </li>
 @endsection
 
+@section('mobile-menu-link')
+<a href="/drive" class="ml-6 text-gray-600">Storage</a>
+<a href="/starred" class="ml-6 text-gray-600">Starred</a>
+@endsection
+
 @section('content-title', 'Trash')
 
 @section('content')
@@ -30,7 +35,7 @@
 	@foreach($dates as $date)
 		<div class="mb-10">
 			<p class="font-semibold">{{ $date }}</p>
-			<div class="grid grid-cols-4 gap-6 mt-4">
+			<div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
 				@php
 					$i = 1;
 				@endphp

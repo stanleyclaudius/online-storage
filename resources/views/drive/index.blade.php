@@ -23,14 +23,21 @@
 </li>
 @endsection
 
-@section('content-title', 'My Storage')
+@section('mobile-menu-link')
+<a href="/starred" class="ml-6 text-gray-600">Starred</a>
+<a href="/trash" class="ml-6 text-gray-600">Trash</a>
+@endsection
+
+@section('content-title')
+My Storage
+@endsection
 
 @section('content')
 @if(count($dates) > 0)
 	@foreach($dates as $date)
 		<div class="mb-10">
 			<p class="font-semibold">{{ $date }}</p>
-			<div class="grid grid-cols-4 gap-6 mt-4">
+			<div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
 				@php
 					$i = 1;
 				@endphp

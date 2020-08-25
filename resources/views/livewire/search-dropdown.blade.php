@@ -1,8 +1,8 @@
-<div class="relative" x-data="{ isOpen: true }" @click.away="isOpen = false">
+<div class="relative mb-10 sm:mb-10 md:mb-10 lg:mb-0" x-data="{ isOpen: true }" @click.away="isOpen = false">
 	<div class="absolute top-0 mt-4 pl-5">
 		<img src="{{ asset('icon') }}/drive/search.png" alt="Online Storage">
 	</div>
-	<input wire:model.debounce.100ms="search" type="text" name="search-box" class="w-100 h-12 rounded px-16 bg-gray-200 border border-gray-400 focus:outline-none focus:shadow-outline" placeholder="Search Storage" @focus="isOpen = true" @keydown.shift.tab="isOpen = false" @keydown="isOpen = true">
+	<input wire:model.debounce.100ms="search" type="text" name="search-box" class="w-full sm:w-full md:w-100 lg:w-100 h-12 rounded px-16 bg-gray-200 border border-gray-400 focus:outline-none focus:shadow-outline" placeholder="Search Storage" @focus="isOpen = true" @keydown.shift.tab="isOpen = false" @keydown="isOpen = true">
 	@if(strlen($search) >= 2)
 		<div class="absolute rounded w-full bg-gray-100 border border-gray-400 mt-5" style="top: 100%; z-index: 9999;" x-show.transition.opacity="isOpen" @keydown.escape.window="isOpen = false">
 			@if($drives->count() > 0)

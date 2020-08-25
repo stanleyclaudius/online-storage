@@ -18,18 +18,21 @@
 			outline: 1px solid slategrey;
 		}
 
-		.dropbtn {
+		.dropbtn,
+		.dropbtn-mobile {
 			padding: 16px;
 			cursor: pointer;
 		}
 
-		.dropdown {
+		.dropdown,
+		.dropdown-mobile {
 			position: relative;
 			display: inline-block;
 			float: right;
 		}
 
-		.dropdown-content {
+		.dropdown-content,
+		.dropdown-content-mobile {
 			display: none;
 			position: absolute;
 			background-color: #f1f1f1;
@@ -39,13 +42,15 @@
 			right: 0;
 		}
 
-		.dropdown-content a {
+		.dropdown-content a,
+		.dropdown-content-mobile a {
 			color: black;
 			padding: 12px 16px;
 			text-decoration: none;
 			display: block;
 		}
 
+		.dropdown-content a:hover,
 		.dropdown-content a:hover {
 			background-color: #ddd;
 		}
@@ -60,13 +65,28 @@
 
 	<div class="flashdata" data-flash="{{ Session::get('drive') }}"></div>
 	
-	<nav class="w-full h-16 border-b border-gray-400 flex items-center">
-		<div class="container mx-auto flex items-center justify-between">
-			<div>
-				<a href="/drive" class="text-2xl">Online Storage</a>
+	<nav class="w-full h-32 sm:h-32 md:h-32 lg:h-16 border-b border-gray-400 flex items-center px-8 sm:px-8 md:px-8 lg:px-0">
+		<div class="container mx-auto flex flex-col sm:flex-col md:flex-col lg:flex-row items-center justify-between">
+			<div class="flex items-center mt-4 sm:mt-4 md:mt-4 lg:mt-0">
+				<a href="/drive" class="text-2xl">
+					Online Storage
+				</a>
+				<div class="dropdown-mobile ml-3">
+					<button onclick="mobileDropDownFunction()" class="dropbtn-mobile block sm:block md:block lg:hidden">
+						@if(auth()->user()->avatar == null)
+							<img src="{{ asset('avatar') }}/default.png" alt="Online Storage User Avatar" class="rounded-full border border-gray-500" width="40">
+						@else
+							<img src="{{ asset('avatar') }}/auth()->user()->avatar" alt="Online Storage User Avatar" class="rounded-full border border-gray-500" width="40">
+						@endif
+					</button>
+					<div id="myDropdown-mobile" class="dropdown-content-mobile block sm:block md:block lg:hidden">
+						<a href="javascript:void(0)" id="editprofilemodal">{{ auth()->user()->name }}</a>
+						<a href="/logout">Logout</a>
+					</div>
+				</div>
 			</div>
 			@livewire('search-dropdown')
-			<div>
+			<div class="hidden sm:hidden md:hidden lg:block">
 				@if(auth()->user()->avatar == null)
 					<div class="dropdown">
 						<button onclick="dropDownFunction()" class="dropbtn">
@@ -93,7 +113,7 @@
 	</nav>
 
 	<div class="grid grid-cols-5 gap-0 w-full mt-4">
-		<div>
+		<div class="hidden sm:hidden md:hidden lg:block">
 			<div class="px-10">
 				<ul>
 					@yield('navbar-link')
@@ -117,9 +137,9 @@
 									$storageCountGB = $storageCount / 1000;
 									$storageCountGB = number_format($storageCountGB, 2);
 								@endphp
-								{{ $storageCountGB }} GB of 10 GB	
+								{{ $storageCountGB }} GB of 10 GB
 							@else
-								{{ $storageCount }} MB of 10 GB	
+								{{ $storageCount }} MB of 10 GB
 							@endif
 						@else
 							0 MB of 10 GB
@@ -147,8 +167,13 @@
 			</div>
 		</div>
 
-		<div class="col-span-4 px-10">
-			<p class="border-b border-gray-300 pb-3 text-xl">@yield('content-title')</p>
+		<div class="col-span-5 sm:col-span-5 md:col-span-5 lg:col-span-4 px-5">
+			<div class="border-b border-gray-300 pb-3 flex items-center">
+				<p class="text-xl">@yield('content-title')</p>
+				<div class="items-center flex sm:flex md:flex lg:hidden">
+					@yield('mobile-menu-link')
+				</div>
+			</div>
 			<div class="w-full mt-5 storage-container pr-3" style="height: 72vh; overflow-y: auto;">
 				@yield('content')
 			</div>
@@ -213,6 +238,10 @@
 <script src="{{ asset('js') }}/driveflash.js"></script>
 @livewireScripts
 <script>
+	function mobileDropDownFunction() {
+		document.getElementById("myDropdown-mobile").classList.toggle("show");
+	}
+
 	function dropDownFunction() {
 		document.getElementById("myDropdown").classList.toggle("show");
 	}
