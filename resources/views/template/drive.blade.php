@@ -168,10 +168,25 @@
 		</div>
 
 		<div class="col-span-5 sm:col-span-5 md:col-span-5 lg:col-span-4 px-5">
-			<div class="border-b border-gray-300 pb-3 flex items-center">
-				<p class="text-xl">@yield('content-title')</p>
-				<div class="items-center flex sm:flex md:flex lg:hidden">
-					@yield('mobile-menu-link')
+			<div class="border-b border-gray-300 pb-3 flex items-center justify-between">
+				<div class="flex items-center">
+					<p class="text-xl">@yield('content-title')</p>
+					<div class="items-center flex sm:flex md:flex lg:hidden">
+						@yield('mobile-menu-link')
+					</div>
+				</div>
+				<div class="block sm:block md:block lg:hidden">
+					<form action="/drive/upload" method="post" enctype="multipart/form-data" class="uploadfileformmobile">
+						@csrf
+						<input type="file" id="filemobile" class="hidden" name="uploadfile">
+						<label for="file" class="uploadfilebuttonmobile flex items-center hover:text-blue-500 hover:font-semibold" style="cursor: pointer;">
+							<img src="{{ asset('icon') }}/drive/upload.png" alt="Online Storage" class="mr-3 uploadfileimage">
+							<p class="filelabelmobile">Upload</p>
+						</label>
+						@if($errors->has('uploadfile'))
+							<p class="text-sm mt-1 text-red-500">The file you upload can only be a PDF, word, powerpoint, excel, or image document.</p>
+						@endif
+					</form>
 				</div>
 			</div>
 			<div class="w-full mt-5 storage-container pr-3" style="height: 72vh; overflow-y: auto;">
@@ -252,6 +267,13 @@
 			$('.filelabel').html(fileName);
 			$('.uploadfilebutton').attr('for', '');
 			$('.uploadfileform').submit();
+		});
+
+		$('#filemobile').on('change', function(e) {
+			let fileName = e.target.files[0].name;
+			$('.filelabelmobile').html(fileName);
+			$('.uploadfilebuttonmobile').attr('for', '');
+			$('.uploadfileformmobile').submit();
 		});
 
 		$('.uploadfilebutton').mouseover(function() {
